@@ -1,0 +1,252 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>课文学习｜我的中文小课堂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:
+        "Microsoft YaHei",
+        "PingFang SC",
+        "Noto Sans SC",
+        Arial,
+        sans-serif;
+
+    background: linear-gradient(180deg, #fff9f5 0%, #f8fbff 100%);
+    color: #334155;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 45px 20px 25px;
+}
+
+.back {
+    display: inline-block;
+    text-decoration: none;
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.back:hover {
+    color: #db2777;
+}
+
+.icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 16px;
+}
+
+main {
+    max-width: 950px;
+    margin: auto;
+    padding: 20px 20px 70px;
+}
+
+.text-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 22px;
+    padding: 28px;
+
+    text-decoration: none;
+    color: inherit;
+
+    box-shadow: 0 7px 22px rgba(100,116,139,0.10);
+
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 13px 30px rgba(100,116,139,0.15);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 13px;
+}
+
+.card h2 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.author {
+    color: #db2777;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.arrow {
+    display: inline-block;
+    margin-top: 18px;
+    color: #db2777;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.new {
+    display: inline-block;
+    background: #fef3c7;
+    color: #b45309;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    .text-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="../index.html" class="back">
+        ← 返回中文小课堂
+    </a>
+
+    <div class="icon">📖</div>
+
+    <h1>课文学习</h1>
+
+    <p class="subtitle">
+        阅读课文，学习词语、句子和表达。
+    </p>
+
+</header>
+
+
+<main>
+
+    <div class="text-grid">
+
+
+        <!-- 济南的冬天 -->
+
+        <a href="jinan-winter.html" class="card">
+
+            <div class="card-icon">❄️</div>
+
+            <h2>
+                《济南的冬天》
+                <span class="new">NEW</span>
+            </h2>
+
+            <div class="author">
+                老舍
+            </div>
+
+            <p>
+                一起走进老舍笔下的济南，
+                感受温晴的冬天，学习课文中的词语和表达。
+            </p>
+
+            <span class="arrow">
+                开始学习 →
+            </span>
+
+        </a>
+
+
+        <!-- 小雨点 -->
+
+        <a href="xiaoyudian.html" class="card">
+
+            <div class="card-icon">🌧️</div>
+
+            <h2>
+                《小雨点》
+            </h2>
+
+            <p>
+                阅读课文，学习词语、句子和课文内容。
+            </p>
+
+            <span class="arrow">
+                开始学习 →
+            </span>
+
+        </a>
+
+
+        <!-- 以后增加课文 -->
+
+        <div class="card">
+
+            <div class="card-icon">🌱</div>
+
+            <h2>
+                更多课文
+            </h2>
+
+            <p>
+                更多有趣的中文课文正在准备中……
+            </p>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<footer>
+    📚 多读中文，多发现中文的乐趣。
+</footer>
+
+</body>
+</html>
+```
