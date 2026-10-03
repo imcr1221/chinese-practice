@@ -1,0 +1,243 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>语法练习｜我的中文小课堂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:
+        "Microsoft YaHei",
+        "PingFang SC",
+        "Noto Sans SC",
+        Arial,
+        sans-serif;
+
+    background: linear-gradient(180deg, #f7fbff 0%, #fffaf5 100%);
+    color: #334155;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 45px 20px 25px;
+}
+
+.back {
+    display: inline-block;
+    text-decoration: none;
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.back:hover {
+    color: #2563eb;
+}
+
+.icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 16px;
+}
+
+main {
+    max-width: 950px;
+    margin: auto;
+    padding: 20px 20px 70px;
+}
+
+.practice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 22px;
+    padding: 28px;
+
+    text-decoration: none;
+    color: inherit;
+
+    box-shadow: 0 7px 22px rgba(100,116,139,0.10);
+
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 13px 30px rgba(100,116,139,0.15);
+}
+
+.card-icon {
+    font-size: 38px;
+    margin-bottom: 13px;
+}
+
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 9px;
+}
+
+.card p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.arrow {
+    display: inline-block;
+    margin-top: 18px;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    .practice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="../index.html" class="back">
+        ← 返回中文小课堂
+    </a>
+
+    <div class="icon">🧩</div>
+
+    <h1>语法练习</h1>
+
+    <p class="subtitle">
+        学习中文句子的结构，做一做练习吧！
+    </p>
+
+</header>
+
+
+<main>
+
+    <div class="practice-grid">
+
+        <!-- 时间和地点 -->
+
+        <a href="time-location.html" class="card">
+
+            <div class="card-icon">📍</div>
+
+            <h2>时间和地点</h2>
+
+            <p>
+                学习中文句子中时间和地点的常见位置，
+                了解不同成分怎样组成一个完整的句子。
+            </p>
+
+            <span class="arrow">
+                开始练习 →
+            </span>
+
+        </a>
+
+
+        <!-- 方位词 -->
+
+        <a href="directions.html" class="card">
+
+            <div class="card-icon">🐰</div>
+
+            <h2>方位词</h2>
+
+            <p>
+                学习上、下、左、右、里、外、
+                前、后等方位表达。
+            </p>
+
+            <span class="arrow">
+                开始练习 →
+            </span>
+
+        </a>
+
+
+        <!-- 句子结构 -->
+
+        <a href="sentence-structure.html" class="card">
+
+            <div class="card-icon">📝</div>
+
+            <h2>句子结构</h2>
+
+            <p>
+                学习中文句子的基本结构，
+                通过例句和练习加深理解。
+            </p>
+
+            <span class="arrow">
+                开始练习 →
+            </span>
+
+        </a>
+
+
+        <!-- 以后增加 -->
+
+        <div class="card">
+
+            <div class="card-icon">🌱</div>
+
+            <h2>更多语法</h2>
+
+            <p>
+                更多中文语法练习正在准备中……
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+    🌱 学一点，练一点，慢慢进步。
+</footer>
+
+</body>
+</html>
+```
