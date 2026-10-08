@@ -361,7 +361,7 @@ body {
   .hole { width: 100px; height: 90px; }
   .mole-face { font-size: 36px; }
   .mole-word { font-size: 14px; }
-  /* 听音辨字 */
+  /* 听音选词 */
   .listen-options { grid-template-columns: repeat(2, 110px); gap: 15px; }
   .listen-opt { width: 110px; height: 110px; font-size: 44px; }
   /* 记忆翻牌 */
@@ -381,6 +381,8 @@ body {
   .mic-btn { width: 70px; height: 70px; font-size: 35px; }
   .target-hint { font-size: 16px; padding: 8px 15px; }
 }
+
+.read-wrap{max-width:940px;margin:15px auto;padding:26px;background:#fff;border-radius:20px;width:94%;color:#333;user-select:text}.read-wrap p{font-size:23px;line-height:2.1;text-indent:2em;margin:18px 0}.read-toolbar{display:flex;gap:10px;flex-wrap:wrap}.read-toolbar button{padding:10px 18px;border:0;border-radius:12px;background:#667eea;color:white;font-size:17px;cursor:pointer}.vocab-row{display:grid;grid-template-columns:1fr 1fr 3fr;gap:12px;padding:14px;border-bottom:1px solid #eee;align-items:center}.mem-back{font-size:20px}.listen-opt{font-size:28px;padding:8px;word-break:break-all}.title{text-align:center;font-size:clamp(25px,4vw,48px)}.reader-note{color:#777;font-size:14px;padding-top:10px}@media(max-width:600px){.read-wrap p{font-size:20px}.vocab-row{grid-template-columns:1fr 1fr}.vocab-row span:last-child{grid-column:1/-1}}
 </style>
 </head>
 <body>
@@ -389,7 +391,9 @@ body {
 <div id="mainMenu">
   <div class="title">📖 济南的冬天 生字词大冒险 📖</div>
   <div class="subtitle">第11册 · 第14课 · 生字词专项练习</div>
-  <div class="game-grid">
+  <div style="margin-bottom:20px;color:white"><a style="color:white" href="index.html">← 课文目录</a></div><div class="game-grid">
+<div class="game-card" onclick="openReader()"><div class="icon">📖</div><div class="name">课文原文</div><div class="desc">完整阅读课文，支持整篇和分段朗读</div></div>
+<div class="game-card" onclick="openVocab()"><div class="icon">📚</div><div class="name">词语学习</div><div class="desc">查看本课全部词语、拼音和解释</div></div>
     <div class="game-card" onclick="startShoot()">
       <div class="icon">🎯</div>
       <div class="name">拼音射击</div>
@@ -397,13 +401,13 @@ body {
     </div>
     <div class="game-card" onclick="startRace()">
       <div class="icon">🏎️</div>
-      <div class="name">巴厘岛赛车</div>
+      <div class="name">词义赛车</div>
       <div class="desc">答对释义赛车前进，和AI竞速冲线</div>
     </div>
     <div class="game-card" onclick="startMemory()">
       <div class="icon">🃏</div>
       <div class="name">记忆翻牌</div>
-      <div class="desc">翻牌配对近义词，练词义辨析</div>
+      <div class="desc">翻牌配对词语和解释，练词义辨析</div>
     </div>
     <div class="game-card" onclick="startWhack()">
       <div class="icon">🔨</div>
@@ -412,13 +416,13 @@ body {
     </div>
     <div class="game-card" onclick="startListen()">
       <div class="icon">👂</div>
-      <div class="name">听音辨字</div>
-      <div class="desc">听发音选正确汉字，形近字辨析</div>
+      <div class="name">听音选词</div>
+      <div class="desc">听发音选词语，不辨形近字</div>
     </div>
     <div class="game-card" onclick="startSpeak()">
       <div class="icon">🎤</div>
       <div class="name">我是小主播</div>
-      <div class="desc">看着汉字读出来，语音识别打分</div>
+      <div class="desc">看着汉字读出来，朗读词语，识别结果仅供参考</div>
     </div>
   </div>
   <div style="height:20px;"></div>
@@ -549,47 +553,13 @@ body {
   </div>
 </div>
 
+<div id="readGame" class="game-container"><div class="game-header"><button class="btn-back" onclick="stopReading();quitGame('readGame')">← 返回菜单</button><strong>济南的冬天 · 课文原文</strong></div><div class="read-wrap"><div class="read-toolbar"><button onclick="resizeArticle(2)">字号＋</button><button onclick="resizeArticle(-2)">字号－</button></div><div class="reader-note">按上传教材版本录入。</div><article id="article"><p>对于一个在北京住惯的人，冬天要是不刮风，那简直就会觉得是奇迹，而济南的冬天是没有风声的。对于一个刚从伦敦回来的人，冬天要是能看见日光，那简直是怪事，而济南的冬天是晴朗的。自然，在热带的地方，日光永远那么毒。在北方的冬天，能有这样温暖的天气，济南真得算个宝地。</p><p>一个老城，有山有水，悠闲地晒着阳光，暖和舒适地睡着，只等春风来把它们唤醒，这是不是一个理想的境界！小山把济南围了个圈，只有北边缺着点儿口。这一圈小山在冬天特别可爱，好像是把济南放在一个小摇篮里，它们轻声地说：“你们放心吧，这儿准保暖和。”真的，济南的人们在冬天是脸上含笑的。</p><p>最妙的是下点儿小雪呀。看吧，山上的松树更苍翠了，树尖上顶着一小朵白花，真的很好看。山尖全白了，给蓝天镶上一道银边。山坡上，有的地方雪厚点儿，有的地方草色还露着，一道白，一道黄，大山好像穿上了一件花衣裳。</p><p>古老的济南，城里那么狭窄，城外却很宽敞，山坡上卧着些小村庄，小村庄的房顶上卧着点儿雪，像画儿似的。</p><p>那湖水呢，不但不结冰，甚至还冒着点儿热气。水藻显得更绿了，河水也格外清澈。空中，半空中，天上，全是那么清亮，好像一块蓝水晶似的。蓝水晶里，包着红屋顶，黄草山，灰色的树影。</p><p>这就是济南的冬天。</p></article></div></div><div id="vocabGame" class="game-container"><div class="game-header"><button class="btn-back" onclick="stopReading();quitGame('vocabGame')">← 返回菜单</button><strong>本课词语</strong></div><div class="read-wrap"><div class="vocab-row"><button onclick="readVocab('对于')">🔊 对于</button><span>duìyú</span><span>引出所涉及的对象，如对于我来说</span></div><div class="vocab-row"><button onclick="readVocab('奇迹')">🔊 奇迹</button><span>qíjì</span><span>非常少见、令人惊讶的事情</span></div><div class="vocab-row"><button onclick="readVocab('日光')">🔊 日光</button><span>rìguāng</span><span>太阳发出的光</span></div><div class="vocab-row"><button onclick="readVocab('热带')">🔊 热带</button><span>rèdài</span><span>地球上靠近赤道的炎热地区</span></div><div class="vocab-row"><button onclick="readVocab('毒')">🔊 毒</button><span>dú</span><span>这里指日光强烈、晒得难受</span></div><div class="vocab-row"><button onclick="readVocab('宝地')">🔊 宝地</button><span>bǎodì</span><span>条件优越、值得珍爱的地方</span></div><div class="vocab-row"><button onclick="readVocab('唤')">🔊 唤</button><span>huàn</span><span>呼叫、叫醒，如唤醒</span></div><div class="vocab-row"><button onclick="readVocab('境界')">🔊 境界</button><span>jìngjiè</span><span>这里指景物形成的情景</span></div><div class="vocab-row"><button onclick="readVocab('准保')">🔊 准保</button><span>zhǔnbǎo</span><span>一定，保证</span></div><div class="vocab-row"><button onclick="readVocab('含')">🔊 含</button><span>hán</span><span>带着或藏着，如脸上含笑</span></div><div class="vocab-row"><button onclick="readVocab('妙')">🔊 妙</button><span>miào</span><span>美好、巧妙，如最妙的景色</span></div><div class="vocab-row"><button onclick="readVocab('松树')">🔊 松树</button><span>sōngshù</span><span>针形叶、常绿的一类树</span></div><div class="vocab-row"><button onclick="readVocab('苍翠')">🔊 苍翠</button><span>cāngcuì</span><span>草木深绿而有生机</span></div><div class="vocab-row"><button onclick="readVocab('尖')">🔊 尖</button><span>jiān</span><span>末端细小的部分，如树尖</span></div><div class="vocab-row"><button onclick="readVocab('衣裳')">🔊 衣裳</button><span>yīshang</span><span>衣服</span></div><div class="vocab-row"><button onclick="readVocab('狭窄')">🔊 狭窄</button><span>xiázhǎi</span><span>空间小，不宽阔</span></div><div class="vocab-row"><button onclick="readVocab('卧')">🔊 卧</button><span>wò</span><span>躺着；文中形容村庄静静地坐落</span></div><div class="vocab-row"><button onclick="readVocab('村庄')">🔊 村庄</button><span>cūnzhuāng</span><span>乡村居民聚居的地方</span></div><div class="vocab-row"><button onclick="readVocab('甚至')">🔊 甚至</button><span>shènzhì</span><span>强调更进一步的情况</span></div><div class="vocab-row"><button onclick="readVocab('水藻')">🔊 水藻</button><span>shuǐzǎo</span><span>生活在水中的藻类植物</span></div><div class="vocab-row"><button onclick="readVocab('显得')">🔊 显得</button><span>xiǎnde</span><span>表现出某种样子，如显得更绿</span></div><div class="vocab-row"><button onclick="readVocab('清澈')">🔊 清澈</button><span>qīngchè</span><span>水清而透明</span></div><div class="vocab-row"><button onclick="readVocab('清亮')">🔊 清亮</button><span>qīngliàng</span><span>清明透亮；也可形容声音清脆</span></div><div class="vocab-row"><button onclick="readVocab('水晶')">🔊 水晶</button><span>shuǐjīng</span><span>透明或半透明的晶体矿物</span></div><div class="vocab-row"><button onclick="readVocab('包')">🔊 包</button><span>bāo</span><span>包裹，围在里面</span></div><div class="vocab-row"><button onclick="readVocab('影')">🔊 影</button><span>yǐng</span><span>物体形成的影像，如树影</span></div><div class="vocab-row"><button onclick="readVocab('济南')">🔊 济南</button><span>Jǐnán</span><span>课文描写冬天的中国城市</span></div><div class="vocab-row"><button onclick="readVocab('伦敦')">🔊 伦敦</button><span>Lúndūn</span><span>作者刚从那里回来的英国城市</span></div></div></div>
 <script>
 // ========== 词语数据库（甲乙丙类） ==========
-const words = [
-  { word: "包", pinyin: "bāo", meaning: "裹起来", level: "常用词" },
-  { word: "宝地", pinyin: "bǎodì", meaning: "宝贵地方", level: "常用词" },
-  { word: "苍翠", pinyin: "cāngcuì", meaning: "青绿", level: "常用词" },
-  { word: "村庄", pinyin: "cūnzhuāng", meaning: "农民聚居地方", level: "常用词" },
-  { word: "毒", pinyin: "dú", meaning: "有毒厉害", level: "常用词" },
-  { word: "对于", pinyin: "duìyú", meaning: "关于", level: "常用词" },
-  { word: "含", pinyin: "hán", meaning: "藏在里面", level: "常用词" },
-  { word: "尖", pinyin: "jiān", meaning: "锐利末端", level: "常用词" },
-  { word: "境界", pinyin: "jìngjiè", meaning: "事物所达到程度", level: "常用词" },
-  { word: "妙", pinyin: "miào", meaning: "好美妙", level: "常用词" },
-  { word: "奇迹", pinyin: "qíjì", meaning: "想象不到的不平凡事情", level: "常用词" },
-  { word: "清澈", pinyin: "qīngchè", meaning: "清而透明", level: "常用词" },
-  { word: "清亮", pinyin: "qīngliàng", meaning: "清澈明亮", level: "常用词" },
-  { word: "热带", pinyin: "rèdài", meaning: "赤道两侧带", level: "常用词" },
-  { word: "日光", pinyin: "rìguāng", meaning: "太阳光", level: "常用词" },
-  { word: "甚至", pinyin: "shènzhì", meaning: "提出突出例子", level: "常用词" },
-  { word: "松树", pinyin: "sōngshù", meaning: "松科植物", level: "常用词" },
-  { word: "水晶", pinyin: "shuǐjīng", meaning: "透明结晶矿", level: "常用词" },
-  { word: "水藻", pinyin: "shuǐzǎo", meaning: "水中藻类", level: "常用词" },
-  { word: "卧", pinyin: "wò", meaning: "躺下", level: "常用词" },
-  { word: "狭窄", pinyin: "xiázhǎi", meaning: "宽度小", level: "常用词" },
-  { word: "显得", pinyin: "xiǎnde", meaning: "表现出", level: "常用词" },
-  { word: "影", pinyin: "yǐng", meaning: "影子", level: "常用词" },
-  { word: "准保", pinyin: "zhǔnbǎo", meaning: "一定担保", level: "常用词" },
-  { word: "衣裳", pinyin: "yīshang", meaning: "衣服", level: "常用词" },
-];
+const words = [{"word": "对于", "pinyin": "duìyú", "meaning": "引出所涉及的对象，如对于我来说", "level": "课文词语"}, {"word": "奇迹", "pinyin": "qíjì", "meaning": "非常少见、令人惊讶的事情", "level": "课文词语"}, {"word": "日光", "pinyin": "rìguāng", "meaning": "太阳发出的光", "level": "课文词语"}, {"word": "热带", "pinyin": "rèdài", "meaning": "地球上靠近赤道的炎热地区", "level": "课文词语"}, {"word": "毒", "pinyin": "dú", "meaning": "这里指日光强烈、晒得难受", "level": "课文词语"}, {"word": "宝地", "pinyin": "bǎodì", "meaning": "条件优越、值得珍爱的地方", "level": "课文词语"}, {"word": "唤", "pinyin": "huàn", "meaning": "呼叫、叫醒，如唤醒", "level": "课文词语"}, {"word": "境界", "pinyin": "jìngjiè", "meaning": "这里指景物形成的情景", "level": "课文词语"}, {"word": "准保", "pinyin": "zhǔnbǎo", "meaning": "一定，保证", "level": "课文词语"}, {"word": "含", "pinyin": "hán", "meaning": "带着或藏着，如脸上含笑", "level": "课文词语"}, {"word": "妙", "pinyin": "miào", "meaning": "美好、巧妙，如最妙的景色", "level": "课文词语"}, {"word": "松树", "pinyin": "sōngshù", "meaning": "针形叶、常绿的一类树", "level": "课文词语"}, {"word": "苍翠", "pinyin": "cāngcuì", "meaning": "草木深绿而有生机", "level": "课文词语"}, {"word": "尖", "pinyin": "jiān", "meaning": "末端细小的部分，如树尖", "level": "课文词语"}, {"word": "衣裳", "pinyin": "yīshang", "meaning": "衣服", "level": "课文词语"}, {"word": "狭窄", "pinyin": "xiázhǎi", "meaning": "空间小，不宽阔", "level": "课文词语"}, {"word": "卧", "pinyin": "wò", "meaning": "躺着；文中形容村庄静静地坐落", "level": "课文词语"}, {"word": "村庄", "pinyin": "cūnzhuāng", "meaning": "乡村居民聚居的地方", "level": "课文词语"}, {"word": "甚至", "pinyin": "shènzhì", "meaning": "强调更进一步的情况", "level": "课文词语"}, {"word": "水藻", "pinyin": "shuǐzǎo", "meaning": "生活在水中的藻类植物", "level": "课文词语"}, {"word": "显得", "pinyin": "xiǎnde", "meaning": "表现出某种样子，如显得更绿", "level": "课文词语"}, {"word": "清澈", "pinyin": "qīngchè", "meaning": "水清而透明", "level": "课文词语"}, {"word": "清亮", "pinyin": "qīngliàng", "meaning": "清明透亮；也可形容声音清脆", "level": "课文词语"}, {"word": "水晶", "pinyin": "shuǐjīng", "meaning": "透明或半透明的晶体矿物", "level": "课文词语"}, {"word": "包", "pinyin": "bāo", "meaning": "包裹，围在里面", "level": "课文词语"}, {"word": "影", "pinyin": "yǐng", "meaning": "物体形成的影像，如树影", "level": "课文词语"}, {"word": "济南", "pinyin": "Jǐnán", "meaning": "课文描写冬天的中国城市", "level": "课文词语"}, {"word": "伦敦", "pinyin": "Lúndūn", "meaning": "作者刚从那里回来的英国城市", "level": "课文词语"}];
 
 // 句子填空题库
-const fillQuestions = [
-  { sentence: "济南真得算个____。", answer: "宝地", options: ["宝地", "好地方", "宝坻", "宝贝"] },
-  { sentence: "济南的冬天是____的。", answer: "温晴", options: ["温晴", "温暖", "晴朗", "温和"] },
-  { sentence: "那水不但不结冰，反倒在绿萍上冒着点热气。", answer: "水藻", options: ["水藻", "水草", "浮萍", "绿苔"] },
-  { sentence: "小山____地把济南围了个圈。", answer: "整", options: ["整", "半", "围", "全"] },
-  { sentence: "树尖上顶着一____白花。", answer: "髻", options: ["髻", "堆", "团", "朵"] },
-  { sentence: "济南的人们在冬天是面上____的。", answer: "含笑", options: ["含笑", "微笑", "欢笑", "笑容"] },
-  { sentence: "水藻真绿，把终年____的绿色全拿出来了。", answer: "贮蓄", options: ["贮蓄", "储存", "积蓄", "贮藏"] },
-  { sentence: "整个的是块____的蓝水晶。", answer: "空灵", options: ["空灵", "透明", "水晶", "透亮"] },
-];
+const fillQuestions = [];
 
 // 页面加载时检测是否支持语音识别，不支持就隐藏"我是小主播"
 window.onload = function() {
@@ -611,6 +581,7 @@ window.onload = function() {
     });
   }
 };
+const articleParagraphs = ["对于一个在北京住惯的人，冬天要是不刮风，那简直就会觉得是奇迹，而济南的冬天是没有风声的。对于一个刚从伦敦回来的人，冬天要是能看见日光，那简直是怪事，而济南的冬天是晴朗的。自然，在热带的地方，日光永远那么毒。在北方的冬天，能有这样温暖的天气，济南真得算个宝地。", "一个老城，有山有水，悠闲地晒着阳光，暖和舒适地睡着，只等春风来把它们唤醒，这是不是一个理想的境界！小山把济南围了个圈，只有北边缺着点儿口。这一圈小山在冬天特别可爱，好像是把济南放在一个小摇篮里，它们轻声地说：“你们放心吧，这儿准保暖和。”真的，济南的人们在冬天是脸上含笑的。", "最妙的是下点儿小雪呀。看吧，山上的松树更苍翠了，树尖上顶着一小朵白花，真的很好看。山尖全白了，给蓝天镶上一道银边。山坡上，有的地方雪厚点儿，有的地方草色还露着，一道白，一道黄，大山好像穿上了一件花衣裳。", "古老的济南，城里那么狭窄，城外却很宽敞，山坡上卧着些小村庄，小村庄的房顶上卧着点儿雪，像画儿似的。", "那湖水呢，不但不结冰，甚至还冒着点儿热气。水藻显得更绿了，河水也格外清澈。空中，半空中，天上，全是那么清亮，好像一块蓝水晶似的。蓝水晶里，包着红屋顶，黄草山，灰色的树影。", "这就是济南的冬天。"];
 let timers = [];
 let currentGame = null; // 记录当前在玩哪个游戏，用于"再玩一次"
 let totalScore = 0;
@@ -643,7 +614,7 @@ function quitGame(gameId) {
   stopSpeakRecognition();
   speakState.autoListen = false;
   document.getElementById('micBtn') && document.getElementById('micBtn').classList.remove('recording');
-  // 听音辨字相关定时器
+  // 听音选词相关定时器
   if (listenState.nextTimeout) clearTimeout(listenState.nextTimeout);
   if (listenState.speakTimeout) clearTimeout(listenState.speakTimeout);
   // 停止语音播报
@@ -685,6 +656,7 @@ function closeResult() {
 }
 
 function backToMenu() {
+  timers.forEach(t=>clearTimeout(t));timers=[];stopSpeakRecognition();stopReading();
   document.getElementById('resultModal').style.display = 'none';
   // 把这次游戏的总分加到总分
   if (lastGameScore > 0) {
@@ -1106,7 +1078,8 @@ function nextRaceQuestion() {
         try { playSound('crash'); } catch(e) {}
       }
       updateRaceCars();
-      setTimeout(() => {
+      timers.push(setTimeout(() => {
+        if(currentGame!=='race')return;
         raceState.round++;
         if (raceState.round > raceState.totalRounds || raceState.playerDist >= 300 || raceState.oppDist >= 300) {
           clearInterval(raceState.opponentTimer);
@@ -1114,7 +1087,7 @@ function nextRaceQuestion() {
         } else {
           nextRaceQuestion();
         }
-      }, 1000);
+      }, 1000));
     };
     optDiv.appendChild(btn);
   });
@@ -1141,20 +1114,7 @@ function endRace() {
 // ========== 游戏4：记忆翻牌（近义词配对） ==========
 let memState = { firstCard: null, matched: 0, moves: 0, lock: false };
 // 近义词/同义词配对库（多备几对，每次随机选6对）
-const allSynonymPairs = [
-  ["宝地", "宝地"],
-  ["苍翠", "青翠"],
-  ["村庄", "村落"],
-  ["对于", "关于"],
-  ["含", "藏"],
-  ["尖", "锐"],
-  ["境界", "境地"],
-  ["妙", "美"],
-  ["奇迹", "奇观"],
-  ["清澈", "清亮"],
-  ["日光", "阳光"],
-  ["狭窄", "狭小"],
-];
+const allSynonymPairs = [["对于", "引出所涉及的对象，如对于我来说"], ["奇迹", "非常少见、令人惊讶的事情"], ["日光", "太阳发出的光"], ["热带", "地球上靠近赤道的炎热地区"], ["毒", "这里指日光强烈、晒得难受"], ["宝地", "条件优越、值得珍爱的地方"], ["唤", "呼叫、叫醒，如唤醒"], ["境界", "这里指景物形成的情景"], ["准保", "一定，保证"], ["含", "带着或藏着，如脸上含笑"], ["妙", "美好、巧妙，如最妙的景色"], ["松树", "针形叶、常绿的一类树"]];
 function startMemory() {
   currentGame = 'memory';
   document.getElementById('mainMenu').style.display = 'none';
@@ -1315,20 +1275,7 @@ function endWhack() {
 
 // ========== 游戏6：听音选字 ==========
 // 生字表：每个字配常用词提示 + 3个形近/同音干扰字
-const characterBank = [
-  { char: "济", hint: "济南的济", options: ["济", "齐", "挤", "济"] },
-  { char: "南", hint: "南方的南", options: ["南", "两", "冉", "南"] },
-  { char: "响", hint: "响晴的响", options: ["响", "向", "晌", "响"] },
-  { char: "晴", hint: "晴天的晴", options: ["晴", "睛", "清", "晴"] },
-  { char: "温", hint: "温暖的温", options: ["温", "湿", "漫", "温"] },
-  { char: "安", hint: "安全的安", options: ["安", "按", "案", "安"] },
-  { char: "适", hint: "舒适的适", options: ["适", "括", "恰", "适"] },
-  { char: "藏", hint: "躲藏的藏", options: ["藏", "臧", "臧", "藏"] },
-  { char: "卧", hint: "卧室的卧", options: ["卧", "颐", "臣", "卧"] },
-  { char: "铺", hint: "铺张的铺", options: ["铺", "捕", "辅", "铺"] },
-  { char: "绿", hint: "绿色的绿", options: ["绿", "碌", "禄", "绿"] },
-  { char: "萍", hint: "浮萍的萍", options: ["萍", "评", "苹", "萍"] },
-];
+const characterBank = [{"char": "对于", "hint": "对于", "options": ["对于", "奇迹", "日光", "热带"]}, {"char": "奇迹", "hint": "奇迹", "options": ["奇迹", "对于", "日光", "热带"]}, {"char": "日光", "hint": "日光", "options": ["日光", "对于", "奇迹", "热带"]}, {"char": "热带", "hint": "热带", "options": ["热带", "对于", "奇迹", "日光"]}, {"char": "毒", "hint": "毒", "options": ["毒", "对于", "奇迹", "日光"]}, {"char": "宝地", "hint": "宝地", "options": ["宝地", "对于", "奇迹", "日光"]}, {"char": "唤", "hint": "唤", "options": ["唤", "对于", "奇迹", "日光"]}, {"char": "境界", "hint": "境界", "options": ["境界", "对于", "奇迹", "日光"]}, {"char": "准保", "hint": "准保", "options": ["准保", "对于", "奇迹", "日光"]}, {"char": "含", "hint": "含", "options": ["含", "对于", "奇迹", "日光"]}, {"char": "妙", "hint": "妙", "options": ["妙", "对于", "奇迹", "日光"]}, {"char": "松树", "hint": "松树", "options": ["松树", "对于", "奇迹", "日光"]}, {"char": "苍翠", "hint": "苍翠", "options": ["苍翠", "对于", "奇迹", "日光"]}, {"char": "尖", "hint": "尖", "options": ["尖", "对于", "奇迹", "日光"]}, {"char": "衣裳", "hint": "衣裳", "options": ["衣裳", "对于", "奇迹", "日光"]}, {"char": "狭窄", "hint": "狭窄", "options": ["狭窄", "对于", "奇迹", "日光"]}, {"char": "卧", "hint": "卧", "options": ["卧", "对于", "奇迹", "日光"]}, {"char": "村庄", "hint": "村庄", "options": ["村庄", "对于", "奇迹", "日光"]}, {"char": "甚至", "hint": "甚至", "options": ["甚至", "对于", "奇迹", "日光"]}, {"char": "水藻", "hint": "水藻", "options": ["水藻", "对于", "奇迹", "日光"]}, {"char": "显得", "hint": "显得", "options": ["显得", "对于", "奇迹", "日光"]}, {"char": "清澈", "hint": "清澈", "options": ["清澈", "对于", "奇迹", "日光"]}, {"char": "清亮", "hint": "清亮", "options": ["清亮", "对于", "奇迹", "日光"]}, {"char": "水晶", "hint": "水晶", "options": ["水晶", "对于", "奇迹", "日光"]}, {"char": "包", "hint": "包", "options": ["包", "对于", "奇迹", "日光"]}, {"char": "影", "hint": "影", "options": ["影", "对于", "奇迹", "日光"]}, {"char": "济南", "hint": "济南", "options": ["济南", "对于", "奇迹", "日光"]}, {"char": "伦敦", "hint": "伦敦", "options": ["伦敦", "对于", "奇迹", "日光"]}];
 let listenState = { idx: 0, score: 0, currentChar: null, currentHint: '', lastRoundChars: [] };
 function speakWord() {
   if (!listenState.currentHint) return;
@@ -1352,7 +1299,7 @@ function startListen() {
   const oldPool = characterBank.filter(c => listenState.lastRoundChars.includes(c.char));
   // 8个从新的里选，2个从旧的里选（重复率20%以内）
   const chosenFresh = shuffle([...freshPool]).slice(0, 8);
-  const chosenOld = shuffle([...oldPool]).slice(0, 2);
+  const chosenOld = shuffle(characterBank.filter(c => !chosenFresh.includes(c))).slice(0, 10-chosenFresh.length);
   listenState.questions = shuffle([...chosenFresh, ...chosenOld]);
   // 记录这轮用了哪些字
   listenState.lastRoundChars = listenState.questions.map(q => q.char);
@@ -1409,16 +1356,7 @@ function nextListen() {
 //   单字条目配一个常用双字词来读（中文语音识别对单个音节极不敏感，读单字经常
 //   直接返回 no-speech 或者识别成同音字；读成包含该字的双字词后成功率大幅提高）
 //   双字及以上的词语直接朗读
-const speakBank = [
-  { show: "包", read: "书包", pinyin: "bāo" },
-  { show: "毒", read: "有毒", pinyin: "dú" },
-  { show: "含", read: "包含", pinyin: "hán" },
-  { show: "尖", read: "树尖", pinyin: "jiān" },
-  { show: "妙", read: "巧妙", pinyin: "miào" },
-  { show: "卧", read: "卧室", pinyin: "wò" },
-  { show: "影", read: "影子", pinyin: "yǐng" },
-  ...words.filter(w => w.word.length >= 2).map(w => ({ show: w.word, read: w.word, pinyin: w.pinyin }))
-];
+const speakBank = words.map(w=>({show:w.word,read:w.word,pinyin:w.pinyin}));
 
 let speakState = {
   idx: 0, score: 0, currentWord: null, tries: 0,
@@ -1452,7 +1390,7 @@ function stopSpeakRecognition() {
 function matchSpeech(said, target) {
   if (!said || !target) return false;
   if (said === target) return true;
-  if (said.includes(target) || target.includes(said)) return true;
+  // 完整匹配，避免只读一部分也算正确。
   return false;
 }
 
@@ -1613,7 +1551,8 @@ function startListening() {
       document.getElementById('micBtn').classList.remove('recording');
       return;
     }
-    // no-speech / aborted / network 等：提示后自动重试
+    if(e.error === 'network'){speakState.autoListen=false;setSpeakStatus('语音服务暂不可用，可以自己朗读或点击麦克风重试。','#f5576c');return;}
+    // no-speech 等：提示后重试
     setSpeakStatus(e.error === 'no-speech' ? '没听到声音，请靠近麦克风大声读' : '识别出错了，再试一次', '#f5576c');
     if (speakState.autoListen && currentGame === 'speak') {
       speakState.restartTimer = setTimeout(startListening, 800);
@@ -1686,6 +1625,14 @@ function nextFill() {
     optDiv.appendChild(btn);
   });
 }
+
+function openReader(){quitIfPlaying();document.getElementById('mainMenu').style.display='none';document.getElementById('readGame').style.display='flex'}
+function openVocab(){quitIfPlaying();document.getElementById('mainMenu').style.display='none';document.getElementById('vocabGame').style.display='flex'}
+function quitIfPlaying(){if(currentGame){const ids={shoot:'shootGame',race:'raceGame',memory:'memoryGame',whack:'whackGame',listen:'listenGame',speak:'speakGame',fill:'fillGame'};quitGame(ids[currentGame])}}
+let readingToken=0;
+function stopReading(){readingToken++;try{speechSynthesis.cancel()}catch(e){}}
+function resizeArticle(n){document.querySelectorAll('#article p').forEach(p=>{const size=parseFloat(getComputedStyle(p).fontSize);p.style.fontSize=Math.max(18,Math.min(34,size+n))+'px'})}
+function readVocab(w){stopReading();if(!('speechSynthesis'in window))return;const u=new SpeechSynthesisUtterance(w);u.lang='zh-CN';u.rate=.8;speechSynthesis.speak(u)}
 </script>
 </body>
 </html>
