@@ -1,0 +1,29 @@
+name: 自动生成网页语音
+on:
+  push:
+    paths:
+      - '**.html' # 只要你改了网页，就自动触发
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+      - name: 安装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+      - name: 生成语音
+        run: python generate_audio.py
+      - name: 自动推回仓库
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🤖 自动更新高清语音"
+          file_pattern: 'audio/*'
