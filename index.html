@@ -4,298 +4,164 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>我的中文小课堂</title>
+<title>课文学习｜我的中文小课堂</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    body {
-        font-family:
-            "Microsoft YaHei",
-            "PingFang SC",
-            "Noto Sans SC",
-            Arial,
-            sans-serif;
+body {
+    font-family:
+        "Microsoft YaHei",
+        "PingFang SC",
+        "Noto Sans SC",
+        Arial,
+        sans-serif;
 
-        background:
-            linear-gradient(180deg, #f7fbff 0%, #fffaf5 100%);
+    background: linear-gradient(180deg, #fff9f5 0%, #f8fbff 100%);
+    color: #334155;
+    min-height: 100vh;
+}
 
-        color: #334155;
-        min-height: 100vh;
-    }
+header {
+    text-align: center;
+    padding: 45px 20px 25px;
+}
 
-    /* =========================
-       顶部
-    ========================= */
+.back {
+    display: inline-block;
+    text-decoration: none;
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
 
-    header {
-        text-align: center;
-        padding: 55px 20px 35px;
-    }
+.back:hover {
+    color: #db2777;
+}
 
-    .logo {
-        font-size: 48px;
-        margin-bottom: 12px;
+.icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 16px;
+}
+
+main {
+    max-width: 950px;
+    margin: auto;
+    padding: 20px 20px 70px;
+}
+
+.text-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 22px;
+    padding: 28px;
+
+    text-decoration: none;
+    color: inherit;
+
+    box-shadow: 0 7px 22px rgba(100,116,139,0.10);
+
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 13px 30px rgba(100,116,139,0.15);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 13px;
+}
+
+.card h2 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.author {
+    color: #db2777;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.arrow {
+    display: inline-block;
+    margin-top: 18px;
+    color: #db2777;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.new {
+    display: inline-block;
+    background: #fef3c7;
+    color: #b45309;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    .text-grid {
+        grid-template-columns: 1fr;
     }
 
     h1 {
-        font-size: 38px;
-        color: #334155;
-        letter-spacing: 2px;
-        margin-bottom: 12px;
+        font-size: 28px;
     }
-
-    .subtitle {
-        font-size: 17px;
-        color: #64748b;
-    }
-
-    /* =========================
-       主内容
-    ========================= */
-
-    main {
-        max-width: 1050px;
-        margin: 0 auto;
-        padding: 10px 20px 70px;
-    }
-
-    .welcome {
-        text-align: center;
-        margin-bottom: 35px;
-        font-size: 16px;
-        color: #64748b;
-    }
-
-    /* =========================
-       两个主要分类
-    ========================= */
-
-    .category-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-        margin-bottom: 45px;
-    }
-
-    .category {
-        background: white;
-        border-radius: 25px;
-        padding: 35px 30px;
-        text-align: center;
-
-        box-shadow:
-            0 8px 25px rgba(100, 116, 139, 0.10);
-
-        transition:
-            transform 0.25s ease,
-            box-shadow 0.25s ease;
-    }
-
-    .category:hover {
-        transform: translateY(-6px);
-
-        box-shadow:
-            0 15px 35px rgba(100, 116, 139, 0.16);
-    }
-
-    .category-icon {
-        font-size: 58px;
-        margin-bottom: 15px;
-    }
-
-    .category h2 {
-        font-size: 26px;
-        margin-bottom: 10px;
-        color: #334155;
-    }
-
-    .category p {
-        font-size: 15px;
-        color: #64748b;
-        line-height: 1.8;
-        margin-bottom: 22px;
-    }
-
-    .button {
-        display: inline-block;
-        text-decoration: none;
-
-        padding: 11px 25px;
-
-        border-radius: 30px;
-
-        font-size: 15px;
-        font-weight: 600;
-
-        transition:
-            transform 0.2s ease,
-            opacity 0.2s ease;
-    }
-
-    .button:hover {
-        transform: scale(1.04);
-        opacity: 0.88;
-    }
-
-    .grammar-button {
-        background: #dbeafe;
-        color: #2563eb;
-    }
-
-    .text-button {
-        background: #fce7f3;
-        color: #db2777;
-    }
-
-    /* =========================
-       最近学习
-    ========================= */
-
-    .section-title {
-        text-align: center;
-        font-size: 25px;
-        margin-bottom: 22px;
-        color: #334155;
-    }
-
-    .section-title span {
-        margin-right: 8px;
-    }
-
-    .recent-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-    }
-
-    .recent-card {
-        background: white;
-        border-radius: 18px;
-        padding: 22px;
-
-        text-decoration: none;
-        color: inherit;
-
-        box-shadow:
-            0 5px 18px rgba(100, 116, 139, 0.08);
-
-        transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease;
-    }
-
-    .recent-card:hover {
-        transform: translateY(-4px);
-
-        box-shadow:
-            0 10px 25px rgba(100, 116, 139, 0.13);
-    }
-
-    .recent-icon {
-        font-size: 30px;
-        margin-bottom: 10px;
-    }
-
-    .recent-card h3 {
-        font-size: 17px;
-        margin-bottom: 7px;
-        color: #334155;
-    }
-
-    .recent-card p {
-        font-size: 13px;
-        line-height: 1.6;
-        color: #64748b;
-    }
-
-    .new {
-        display: inline-block;
-        font-size: 11px;
-
-        background: #fef3c7;
-        color: #b45309;
-
-        padding: 3px 8px;
-        border-radius: 10px;
-
-        margin-left: 5px;
-        vertical-align: middle;
-    }
-
-    /* =========================
-       页脚
-    ========================= */
-
-    footer {
-        text-align: center;
-        padding: 30px 20px 40px;
-
-        color: #94a3b8;
-        font-size: 14px;
-    }
-
-    .footer-flower {
-        font-size: 22px;
-        margin-bottom: 8px;
-    }
-
-    /* =========================
-       手机
-    ========================= */
-
-    @media (max-width: 700px) {
-
-        header {
-            padding-top: 40px;
-        }
-
-        .logo {
-            font-size: 40px;
-        }
-
-        h1 {
-            font-size: 30px;
-        }
-
-        .subtitle {
-            font-size: 15px;
-        }
-
-        .category-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .recent-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .category {
-            padding: 30px 22px;
-        }
-    }
+}
 </style>
 </head>
 
-
 <body>
-
-<!-- =========================
-     顶部
-========================= -->
 
 <header>
 
-    <div class="logo">🌸</div>
+    <a href="../index.html" class="back">
+        ← 返回中文小课堂
+    </a>
 
-    <h1>我的中文小课堂</h1>
+    <div class="icon">📖</div>
+
+    <h1>课文学习</h1>
 
     <p class="subtitle">
-        学中文 · 读课文 · 做练习
+        阅读课文，学习词语、句子和表达。
     </p>
 
 </header>
@@ -303,136 +169,103 @@
 
 <main>
 
-    <p class="welcome">
-        欢迎来到中文学习小课堂！<br>
-        选择你想学习的内容，开始练习吧 😊
-    </p>
+    <div class="text-grid">
 
 
-    <!-- =========================
-         两大分类
-    ========================= -->
+        <!-- 第12课：找骆驼 · 课后互动练习 -->
+        <a href="zhaoluotuo.html" class="card">
+            <div class="card-icon">🐪</div>
+            <h2>《找骆驼》<span class="new">NEW</span></h2>
+            <p>阅读课文、复习生字词，挑战拼音气球、听音打地鼠、记忆翻牌和寻找骆驼，完成阅读理解与课后练习。</p>
+            <span class="arrow">开始学习 →</span>
+        </a>
 
-    <div class="category-grid">
-
-
-        <!-- 语法 -->
-
-        <div class="category">
-
-            <div class="category-icon">🧩</div>
-
-            <h2>语法练习</h2>
-
-            <p>
-                学习中文句子的结构和语法，
-                通过练习更好地理解和使用中文。
-            </p>
-
-            <a
-                href="grammar/index.html"
-                class="button grammar-button">
-                进入语法练习 →
-            </a>
-
-        </div>
-
-
-        <!-- 课文 -->
-
-        <div class="category">
-
-            <div class="category-icon">📖</div>
-
-            <h2>课文学习</h2>
-
-            <p>
-                阅读有趣的中文课文，
-                学习词语、句子和课文内容。
-            </p>
-
-            <a
-                href="texts/index.html"
-                class="button text-button">
-                进入课文学习 →
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         最近学习
-    ========================= -->
-
-    <h2 class="section-title">
-        <span>✨</span>
-        最近学习
-    </h2>
-
-
-    <div class="recent-grid">
-
+        <!-- 李清照诗词朗诵与补词练习 -->
+<a href="poetry/index.html" class="card">
+            <div class="card-icon">🌸</div>
+            <h2>《李清照诗词》<span class="new">NEW</span></h2>
+            <div class="author">〔宋〕李清照</div>
+            <p>四首经典诗词：听原版朗诵、跟读诗句、补全缺少的词语。</p>
+            <span class="arrow">开始学习 →</span>
+        </a>
 
         <!-- 济南的冬天 -->
+<a href="jinan-winter.html" class="card">
 
-        <a
-            href="texts/jinan-winter.html"
-            class="recent-card">
+            <div class="card-icon">❄️</div>
 
-            <div class="recent-icon">❄️</div>
-
-            <h3>
+            <h2>
                 《济南的冬天》
                 <span class="new">NEW</span>
-            </h3>
+            </h2>
+
+            <div class="author">
+                老舍
+            </div>
 
             <p>
-                老舍笔下的济南冬天，
-                一起阅读课文，学习词语和句子。
+                一起走进老舍笔下的济南，
+                感受温晴的冬天，学习课文中的词语和表达。
             </p>
+
+            <span class="arrow">
+                开始学习 →
+            </span>
 
         </a>
 
+        <!-- 期中复习 -->
+<a href="qizhongfuxi.html" class="card">
+            <div class="card-icon">📝</div>
+            <h2>期中复习<span class="new">NEW</span></h2>
+            <p>四篇课文的字词复习：词义选择、词语配对、情境选词和改句练习。不限时间，可以分几次完成。</p>
+            <span class="arrow">开始复习 →</span>
+        </a>
 
-        <!-- 时间和地点 -->
+        <!-- 小雨点 -->
+<a href="little-raindrop.html" class="card">
 
-        <a
-            href="grammar/time-location.html"
-            class="recent-card">
+            <div class="card-icon">🌧️</div>
 
-            <div class="recent-icon">📍</div>
-
-            <h3>
-                时间和地点
-                <span class="new">NEW</span>
-            </h3>
+            <h2>
+                《小雨点》
+            </h2>
 
             <p>
-                学习中文句子中时间和地点
-                的常见表达方式。
+                阅读课文，学习词语、句子和课文内容。
             </p>
 
+            <span class="arrow">
+                开始学习 →
+            </span>
+
         </a>
+
+        <!-- 美丽的内蒙古草原 -->
+<a href="inner-mongolia-grassland.html" class="card">
+            <div class="card-icon">🌿</div>
+            <h2>《美丽的内蒙古草原》<span class="new">NEW</span></h2>
+            <p>走进辽阔的大草原，阅读原文，学习描写景色和活动的词语。</p>
+            <span class="arrow">开始学习 →</span>
+        </a>
+
+        <!-- 阿凡提的故事 -->
+<a href="afanti-story.html" class="card">
+            <div class="card-icon">🪙</div>
+            <h2>《阿凡提的故事》<span class="new">NEW</span></h2>
+            <p>看看阿凡提怎样帮助穷人，阅读原文，学习词语并挑战字词游戏。</p>
+            <span class="arrow">开始学习 →</span>
+        </a>
+
 
     </div>
 
 </main>
 
 
-<!-- =========================
-     页脚
-========================= -->
-
 <footer>
-
-    <div class="footer-flower">🌱</div>
-
-    <p>学一点，练一点，慢慢进步。</p>
-
+    📚 多读中文，多发现中文的乐趣。
 </footer>
-
 
 </body>
 </html>
