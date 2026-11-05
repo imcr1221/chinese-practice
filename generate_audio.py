@@ -2,7 +2,7 @@ import asyncio, hashlib, json, os, re, glob
 import edge_tts
 
 VOICE = "zh-CN-XiaoyiNeural"
-RATE  = "-5%"
+RATE  = "-25%"
 PITCH = "+8Hz"
 OUT   = "audio"
 
