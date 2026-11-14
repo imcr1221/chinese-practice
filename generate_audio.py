@@ -1,5 +1,6 @@
 import asyncio, hashlib, json, os, re, glob
 import edge_tts
+import html as html_lib
 
 VOICE = "zh-CN-XiaoyiNeural"
 RATE  = "-25%"
@@ -14,6 +15,12 @@ def extract_texts_from_html(filepath):
         with open(filepath, "r", encoding="utf-8") as f:
             html = f.read()
         
+        # 明确提取 TTS 标记，不限制长度，并还原 HTML 实体。
+        for match in re.finditer(r"data-tts-text\s*=\s*([\"'])(.*?)\1", html, re.DOTALL):
+            text = html_lib.unescape(match.group(2)).strip()
+            if text and re.search(r'[\u4e00-\u9fa5]', text):
+                texts.add(text)
+
         # 抓取所有的引号内文本
         matches = re.findall(r'[\'"`](.*?)[\'"`]', html, re.DOTALL)
         for content in matches:
