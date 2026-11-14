@@ -1535,11 +1535,11 @@ function nextFill() {
 &lt;/body&gt;
 &lt;/html&gt;
 "></iframe></div></section>
-</main><footer>第11课 · 鹬蚌相争｜课堂学习与课后复习</footer><script src="audio/tts-manifest.js"></script><script>
+</main><footer>第11课 · 鹬蚌相争｜课堂学习与课后复习</footer><script src="../audio/tts-manifest.js"></script><script>
 let ttsPlayer=null,ttsToken=0;
 function ttsEscape(t){return t.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function stopTTS(){ttsToken++;if(ttsPlayer){ttsPlayer.pause();ttsPlayer.onended=null;ttsPlayer=null;}document.querySelectorAll('.tts-playing').forEach(b=>b.classList.remove('tts-playing'));document.getElementById('ttsStatus').textContent='';}
-function playTTSText(text,button,token,next){if(token!==ttsToken)return;const path=window.TTS_AUDIO&&window.TTS_AUDIO[text];const status=document.getElementById('ttsStatus');if(!path){status.textContent='这段语音尚未生成，请稍后再试。';return;}document.querySelectorAll('.tts-playing').forEach(b=>b.classList.remove('tts-playing'));if(button)button.classList.add('tts-playing');ttsPlayer=new Audio(path);status.textContent='正在朗读……';ttsPlayer.onended=()=>{if(token!==ttsToken)return;if(button)button.classList.remove('tts-playing');status.textContent='';if(next)next();};ttsPlayer.onerror=()=>{if(token!==ttsToken)return;if(button)button.classList.remove('tts-playing');status.textContent='语音暂时无法播放，请检查 audio 文件。';};ttsPlayer.play().catch(()=>{if(token===ttsToken){if(button)button.classList.remove('tts-playing');status.textContent='播放未成功，请再次点击朗读按钮。';}});}
+function playTTSText(text,button,token,next){if(token!==ttsToken)return;const path=window.TTS_AUDIO&&window.TTS_AUDIO[text];const status=document.getElementById('ttsStatus');if(!path){status.textContent='这段语音尚未生成，请稍后再试。';return;}document.querySelectorAll('.tts-playing').forEach(b=>b.classList.remove('tts-playing'));if(button)button.classList.add('tts-playing');ttsPlayer=new Audio(new URL(path,new URL('../',document.baseURI)).href);status.textContent='正在朗读……';ttsPlayer.onended=()=>{if(token!==ttsToken)return;if(button)button.classList.remove('tts-playing');status.textContent='';if(next)next();};ttsPlayer.onerror=()=>{if(token!==ttsToken)return;if(button)button.classList.remove('tts-playing');status.textContent='语音暂时无法播放，请检查 audio 文件。';};ttsPlayer.play().catch(()=>{if(token===ttsToken){if(button)button.classList.remove('tts-playing');status.textContent='播放未成功，请再次点击朗读按钮。';}});}
 function readParagraph(i,button){stopTTS();playTTSText(stories[0].paras[i],button,ttsToken);}
 function readWholeStory(button){stopTTS();const token=ttsToken;let i=0;const next=()=>{if(token!==ttsToken||i>=stories[0].paras.length)return;playTTSText(stories[0].paras[i++],button,token,next);};next();}
 </script><script>
